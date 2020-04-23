@@ -12,6 +12,6 @@ class User(models.Model):
     age = models.IntegerField
 
     def __repr__(self):
-        return ''.format(self.id, self.name)
+        return '{},{}'.format(self.id, self.name)
 
     __str__ = __repr__

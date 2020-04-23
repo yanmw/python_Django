@@ -14,17 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.http import *
+from django.shortcuts import render
 
 
+# 一般不这么写，做演示使用。
 def index(request):
     print(request)
     print(type(request))
     return JsonResponse({'name': 'hello word~'})
+    # return render(request, 'index.html', context={'name': 'cuicui'})
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', index)
+    path('index/', index),
+    path('user/', include('user.urls')),
 ]
